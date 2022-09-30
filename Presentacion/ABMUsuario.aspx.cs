@@ -16,7 +16,35 @@ public partial class ABMUsuario : System.Web.UI.Page
 
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
+        string nombre = txtNombre.Text;
+        
+        try
+        {
+            Usuario usuario = LogicaUsuario.Buscar(nombre);
+           
+            if (usuario != null)
+            {
+                txtNombre.Text = usuario.Nombre;
+                txtApellido.Text = usuario.Apellido;
+                
+                Session["SUsuario"] = usuario;
 
+                btnBaja.Enabled = true;
+                BtnModificar.Enabled = true;
+                btnAlta.Enabled = false;
+            }
+            else
+            {
+                btnAlta.Enabled = true;
+
+                Session["SUsuario"] = null;
+            }
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = ex.Message;
+            Label1.Text = "Test";
+        }
     }
 
     protected void btnAlta_Click(object sender, EventArgs e)
@@ -54,6 +82,9 @@ public partial class ABMUsuario : System.Web.UI.Page
 
     protected void btnLimpiar_Click(object sender, EventArgs e)
     {
-
+        txtUsuario.Text = "";
+        txtNombre.Text = "";
+        txtApellido.Text = "";
+        txtContrasena.Value = "";
     }
 }

@@ -62,6 +62,7 @@
             </table>
             <br />
             <asp:Label ID="lblError" runat="server"></asp:Label>&nbsp;<br />
+            <asp:Label ID="Label1" runat="server"></asp:Label>&nbsp;<br />
             <br />
             <asp:LinkButton ID="LinkButton1" runat="server" PostBackUrl="~/Default.aspx">Volver</asp:LinkButton>
     

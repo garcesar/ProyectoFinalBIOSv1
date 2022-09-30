@@ -13,5 +13,11 @@ namespace Logica
         {
             PersistenciaUsuario.AltaUsuario((Usuario)pUsuario);
         }
+        public static Usuario Buscar(string pNombre)
+        {
+            Usuario usuario = null;
+            usuario = (Usuario)PersistenciaUsuario.BuscarUsuario(pNombre);
+            return usuario;
+        }
     }
 }

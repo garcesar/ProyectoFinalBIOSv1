@@ -53,5 +53,38 @@ namespace Persistencia
         {
 
         }
+
+        public static Usuario BuscarUsuario(string pNombre)
+        {
+            Usuario usuario = null;
+            string logid, nombre, apellido, contrasena;
+
+            SqlDataReader reader;
+            SqlConnection oConnection = new SqlConnection(Conexion.STR);
+            SqlCommand oCommand = new SqlCommand("Exec BuscarUsuario1 " + pNombre, oConnection);
+
+            try
+            {
+                oConnection.Open();
+                reader = oCommand.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    logid = (string)reader["logid"];
+                    contrasena = (string)reader["contrasena"];
+                    nombre = (string)reader["nombre"];
+                    apellido = (string)reader["apellido"];
+
+                    usuario = new Usuario(logid, contrasena, nombre, apellido);
+                }
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally { oConnection.Close(); }
+            return usuario;
+        }
     }
 }

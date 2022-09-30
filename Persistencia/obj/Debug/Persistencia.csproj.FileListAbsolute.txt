@@ -1,0 +1,7 @@
+D:\BIOS_Prog_WebRPM6\ProyectoFinalBios\Persistencia\bin\Debug\Persistencia.dll
+D:\BIOS_Prog_WebRPM6\ProyectoFinalBios\Persistencia\bin\Debug\Persistencia.pdb
+D:\BIOS_Prog_WebRPM6\ProyectoFinalBios\Persistencia\bin\Debug\EntidadesCompartidas.dll
+D:\BIOS_Prog_WebRPM6\ProyectoFinalBios\Persistencia\bin\Debug\EntidadesCompartidas.pdb
+D:\BIOS_Prog_WebRPM6\ProyectoFinalBios\Persistencia\obj\Debug\Persistencia.csprojResolveAssemblyReference.cache
+D:\BIOS_Prog_WebRPM6\ProyectoFinalBios\Persistencia\obj\Debug\Persistencia.dll
+D:\BIOS_Prog_WebRPM6\ProyectoFinalBios\Persistencia\obj\Debug\Persistencia.pdb
