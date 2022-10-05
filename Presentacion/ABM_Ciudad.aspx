@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ABMUsuario.aspx.cs" Inherits="ABMUsuario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ABM_Ciudad.aspx.cs" Inherits="ABM_Ciudad" %>
 
 <!DOCTYPE html>
 
@@ -10,7 +10,7 @@
         <form id="form1" runat="server">
         <div class="container">
             <br />
-            <span style="font-size: 14pt; color: #006699; text-decoration: underline"><strong>Mantenimiento a Usuario</strong></span><br />
+            <span style="font-size: 14pt; color: #006699; text-decoration: underline"><strong>ABM Ciudad</strong></span><br />
             <br />
             <br />
             <table border="1" style="margin: 0 auto;">

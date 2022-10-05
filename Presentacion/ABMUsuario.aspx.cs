@@ -11,22 +11,47 @@ public partial class ABMUsuario : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
+        if (!IsPostBack)
+        {
+            this.LimpioFormulario();
+            this.DesactivoBotones();
+        }
+    }
 
+    private void LimpioFormulario()
+    {
+        txtUsuario.Text = "";
+        txtNombre.Text = "";
+        txtApellido.Text = "";
+        txtContrasena.Text = "";
+        ActivoTxt();
+    }
+
+    private void ActivoTxt()
+    {
+        txtUsuario.Enabled = true;
+    }
+
+    private void DesactivoBotones()
+    {
+        btnAlta.Enabled = false;
+        BtnModificar.Enabled = false;
+        btnBaja.Enabled = false;
+        btnBuscar.Enabled = true;
     }
 
     protected void btnBuscar_Click(object sender, EventArgs e)
     {
-        string nombre = txtNombre.Text;
-        
         try
         {
-            Usuario usuario = LogicaUsuario.Buscar(nombre);
-           
+            string pUser = txtUsuario.Text;
+            Usuario usuario = LogicaUsuario.Buscar(pUser);
+
             if (usuario != null)
             {
                 txtNombre.Text = usuario.Nombre;
                 txtApellido.Text = usuario.Apellido;
-                
+
                 Session["SUsuario"] = usuario;
 
                 btnBaja.Enabled = true;
@@ -49,14 +74,14 @@ public partial class ABMUsuario : System.Web.UI.Page
 
     protected void btnAlta_Click(object sender, EventArgs e)
     {
-        string logId, nombre, apellido, contrasena;
-
         try
         {
-            logId = txtUsuario.Text;
-            nombre = txtNombre.Text;
-            apellido = txtApellido.Text;
-            contrasena = txtContrasena.ToString(); //Hay que consumir los datos que se ingresan en el input
+            string logId, nombre, apellido, contrasena;
+
+            logId = txtUsuario.Text.Trim();
+            nombre = txtNombre.Text.Trim();
+            apellido = txtApellido.Text.Trim();
+            contrasena = txtContrasena.Text.Trim();
 
             Usuario usuario = new Usuario(logId, contrasena, nombre, apellido);
 
@@ -72,12 +97,42 @@ public partial class ABMUsuario : System.Web.UI.Page
 
     protected void BtnModificar_Click(object sender, EventArgs e)
     {
+        try
+        {
+            Usuario usuario = (Usuario)Session["SUsuario"];
+            usuario.Logid = txtUsuario.Text;
+            usuario.Nombre = txtNombre.Text;
+            usuario.Apellido = txtApellido.Text;
+            usuario.Contrasena = txtContrasena.Text.Trim();
 
+            LogicaUsuario.Modificar(usuario);
+            lblError.Text = "Modificación Éxitosa";
+
+            this.LimpioFormulario();
+            this.DesactivoBotones();
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = ex.Message;
+        }
     }
 
     protected void btnBaja_Click(object sender, EventArgs e)
     {
+        try
+        {
+            Usuario usuario = (Usuario)Session["SUsuario"];
 
+            LogicaUsuario.Eliminar(usuario);
+            lblError.Text = "Eliminación Éxitosa";
+
+            this.LimpioFormulario();
+            this.DesactivoBotones();
+        }
+        catch (Exception ex)
+        {
+            lblError.Text = ex.Message;
+        }
     }
 
     protected void btnLimpiar_Click(object sender, EventArgs e)
@@ -85,6 +140,6 @@ public partial class ABMUsuario : System.Web.UI.Page
         txtUsuario.Text = "";
         txtNombre.Text = "";
         txtApellido.Text = "";
-        txtContrasena.Value = "";
+        txtContrasena.Text = "";
     }
 }

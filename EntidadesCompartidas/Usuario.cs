@@ -39,7 +39,7 @@ namespace EntidadesCompartidas
                         throw new Exception("");
                 }
                 else
-                    throw new Exception("");
+                    throw new Exception("No puede ser vacio ó mayor a 7");
 
             }
         }

@@ -212,18 +212,20 @@ GO
 CREATE PROC EliminarUsuario
 @logid varchar(50)
 AS
+
 IF NOT EXISTS(SELECT * FROM usuario WHERE usuario.logid = @logid)
-RETURN -1 --el usuario no existe
+	RETURN -1 --el usuario no existe
+
+IF EXISTS( SELECT * from pronostico WHERE pronostico.creador = @logid)
+	RETURN -4 --El usuario tiene pronostico asociados
 ELSE
-BEGIN
-DELETE FROM usuario WHERE usuario.logid = @logid
-IF @@ERROR != 0
-RETURN -2 --error al eliminarse el usuario
-ELSE
-BEGIN
-RETURN 1 --usuario eliminado con exito
-END
-END
+	BEGIN
+		DELETE FROM usuario WHERE usuario.logid = @logid
+		IF @@ERROR != 0
+			RETURN -2 --error al eliminarse el usuario
+		ELSE
+		RETURN 1 --usuario eliminado con exito
+	END
 GO
 --Alta Pronostico--
 CREATE PROC AltaPronostico
@@ -344,3 +346,24 @@ RETURN 1 --existen pronosticos asociados al usuario
 ELSE
 RETURN -1 --no existen pronosticos asociados al usuario
 END
+
+--Buscar usuario
+CREATE PROC BuscarUsuario
+@nombre varchar(50)
+AS
+BEGIN
+	SELECT * FROM usuario WHERE nombre = 'Cesar'
+END
+
+CREATE PROC BuscarUsuario
+@logId varchar(50)
+AS
+BEGIN
+	SELECT * FROM usuario WHERE usuario.logid = @logId;
+END
+
+EXEC BuscarUsuario 'Cesar'
+
+SELECT * FROM usuario
+
+

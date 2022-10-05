@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ABMUsuario.aspx.cs" Inherits="ABMUsuario" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeFile="ABM_Pronostico.aspx.cs" Inherits="ABM_Pronostico" %>
 
 <!DOCTYPE html>
 
@@ -10,40 +10,46 @@
         <form id="form1" runat="server">
         <div class="container">
             <br />
-            <span style="font-size: 14pt; color: #006699; text-decoration: underline"><strong>Mantenimiento a Usuario</strong></span><br />
+            <span style="font-size: 14pt; color: #006699; text-decoration: underline"><strong>Mantenimiento a Pronosticos</strong></span><br />
             <br />
             <br />
             <table border="1" style="margin: 0 auto;">
                 <tr>
                     <td style="width: 94px; height: 21px">
-                        Nombre de usuario:</td>
+                        Temperatura Maxima:</td>
                     <td style="width: 100px; height: 21px">
-                        <asp:TextBox ID="txtUsuario" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtTempMax" runat="server"></asp:TextBox></td>
                     <td style="width: 100px; height: 21px">
-                        <asp:Button ID="btnBuscar" runat="server" Font-Bold="True" 
-                            Text="Buscar" OnClick="btnBuscar_Click" /></td>
+                        <%--<asp:Button ID="btnBuscar" runat="server" Font-Bold="True" 
+                            Text="Buscar" OnClick="btnBuscar_Click" /></td>--%>
                 </tr>
                 <tr>
                     <td style="width: 94px">
-                        Nombre:</td>
+                        Temperatura Minima:</td>
                     <td style="width: 100px">
-                        <asp:TextBox ID="txtNombre" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtTempMin" runat="server"></asp:TextBox></td>
                     <td style="width: 100px">
                     </td>
                 </tr>
                 <tr>
                     <td style="width: 94px">
-                        Apellido:</td>
+                        Velocidad del Viento:</td>
                     <td style="width: 100px">
-                        <asp:TextBox ID="txtApellido" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtVelVient" runat="server"></asp:TextBox></td>
                     <td style="width: 100px">
                     </td>
                 </tr>
-                            <tr>
+                <tr>
                     <td style="width: 94px">
-                        Contraseña:</td>
+                        Tipo de Cielo:</td>
                     <td style="width: 100px">
-                        <asp:TextBox ID="txtContrasena" runat="server"></asp:TextBox></td>
+                        <asp:TextBox ID="txtTipCie" runat="server"></asp:TextBox></td>
+                </tr>
+                <tr>
+                    <td style="width: 94px">
+                        Probabilidad de lluvia:</td>
+                    <td style="width: 100px">
+                        <asp:TextBox ID="txtProbLluv" runat="server"></asp:TextBox></td>
                 </tr>
                 <tr>
                     <td align="center" colspan="2">
